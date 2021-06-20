@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+<head>
+    <title>Bike Usage Model</title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        % Disease:
+        <input name="% Disease" type="number" required>
+        <br>
+        <br> Wellness_Condition:
+        <input name="Wellness_Condition" type="string" required>
+        <br>
+        <br> Region_Troilo:
+        <input name="Region_Troilo" type="string" required>
+        <br>
+        <br>
+         <br> HeatIndexC:
+        <input name="HeatIndexC" type="number" required>
+        <br>
+        <br>
+          <br>
+         <br> DewPointC:
+        <input name="DewPointC" type="number" required>
+        <br>
+             <br>
+         <br> WindChillC:
+        <input name="WindChillC" type="number" required>
+        <br>
+           <br>
+         <br> Season_Fall:
+        <input name="Season_Fall" type="string" required>
+        <br>
+              <br>
+         <br> Season_Spring:
+        <input name="Season_Spring" type="string" required>
+        <br>
+
+          <br> Season_Summer:
+        <input name="Season_Summer" type="string" required>
+        <br>
+     
+             <br> Season_Winter:
+        <input name="Season_Winter" type="string" required>
+        <br>
+          <br>
+    
+             <br> Region_Goyena:
+        <input name="Region_Goyena" type="string" required>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+        {% for variable, value in original_input.items() %}
+            <b>{{ variable }}</b> : {{ value }}
+        {% endfor %}
+        <br>
+        <br> Predicted number of bikes in use:
+           <p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+</html>
